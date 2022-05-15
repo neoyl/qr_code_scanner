@@ -20,7 +20,7 @@ import io.flutter.plugin.common.PluginRegistry
 import io.flutter.plugin.platform.PlatformView
 
 class QRView(
-	private val context: Context,
+	private val context: Context?,
 	messenger: BinaryMessenger,
 	private val id: Int,
 	private val params: HashMap<String, Any>
@@ -289,7 +289,7 @@ class QRView(
 	}
 
 	private fun convertDpToPixels(dp: Double) =
-		(dp * context.resources.displayMetrics.density).toInt()
+		(dp * context!!.resources.displayMetrics.density).toInt()
 
 	private fun hasCameraPermission(): Boolean {
 		return permissionGranted ||
